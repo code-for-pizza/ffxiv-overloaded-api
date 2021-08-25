@@ -1,6 +1,7 @@
 version: '3'
 
 services:
+  # service run when remoting into a container as the coding environment in VS Code
   dev_container:
     build: 
       context: .
@@ -19,7 +20,7 @@ services:
     command: sleep infinity
 
     # Runs app on the same network as the database container, allows "forwardPorts" in devcontainer.json function.
-    network_mode: service:db
+    network_mode: service:db_local
 
     # Uncomment the next line to use a non-root user for all processes.
     # user: node
@@ -27,7 +28,7 @@ services:
     # Use "forwardPorts" in **devcontainer.json** to forward an app port locally. 
     # (Adding the "ports" property to this file will not forward from a Codespace.)
 
-  db:
+  db_local:
     image: postgres:13.4
     restart: unless-stopped
     volumes:
@@ -39,6 +40,29 @@ services:
 
     # Add "forwardPorts": ["5432"] to **devcontainer.json** to forward PostgreSQL locally.
     # (Adding the "ports" property to this file will not forward from a Codespace.)
+
+  service:
+    image: node:14.17.5-alpine
+    command: sh -c "yarn install && yarn build && yarn start"
+    ports:
+      - 3000:3000
+    working_dir: /app
+    volumes:
+      - ./:/app
+    depends_on: 
+      - db
+
+  db:
+    image: postgres:13.4
+    restart: unless-stopped
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - 5432:5432
 
 volumes:
   postgres-data:
