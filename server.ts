@@ -2,7 +2,7 @@ import { ApolloServer } from 'apollo-server';
 import typeDefs from './src/schema/typeDefs';
 import resolvers from './src/schema/resolvers';
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 async function startApolloServer() {
   const server = new ApolloServer({

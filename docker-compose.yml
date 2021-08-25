@@ -45,7 +45,7 @@ services:
     image: node:14.17.5-alpine
     command: sh -c "yarn install && yarn build && yarn start"
     ports:
-      - 3000:3000
+      - 3001:3001
     working_dir: /app
     volumes:
       - ./:/app
