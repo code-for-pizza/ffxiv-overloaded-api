@@ -15,7 +15,7 @@ async function startApolloServer() {
   });
   
   server.listen({port: PORT}, (): void => {
-    console.log(`🚀GraphQL-Server is running on http://localhost:${PORT}/graphql`);
+    console.log(`🚀 GraphQL-Server is running on http://localhost:${PORT}/graphql`);
   });
 }
 
