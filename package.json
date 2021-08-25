@@ -25,7 +25,6 @@
   "scripts": {
     "build": "tsc --project ./",
     "start": "node dist/server.js",
-    "watch": "nodemon dist/server.js",
-    "ts-watch": "ts-node-dev --respawn --transpile-only server.ts"
+    "watch": "ts-node-dev --respawn --transpile-only server.ts"
   }
 }
