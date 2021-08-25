@@ -4,7 +4,7 @@ services:
   dev_container:
     build: 
       context: .
-      dockerfile: Dockerfile
+      dockerfile: ./docker/devcontainer.dockerfile
       args:
         # [Choice] Node.js version: 14, 12, 10
         VARIANT: 14
@@ -13,7 +13,7 @@ services:
         USER_GID: 1000
 
     volumes:
-      - ..:/workspace:cached
+      - .:/workspace
       
     # Overrides default command so things don't shut down after the process ends.
     command: sleep infinity
