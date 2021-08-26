@@ -5,4 +5,8 @@ export default gql`
     hello(name: String): String
     wishlistItems(userID: Int!): [Int]
   }
+
+  type Mutation {
+    addWishlistItem(userID: Int!, itemID: Int!): Int
+  }
 `;
