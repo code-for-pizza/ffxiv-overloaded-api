@@ -1,4 +1,3 @@
-import { stringify } from "querystring";
 import knex from "../database";
 
 export default {
