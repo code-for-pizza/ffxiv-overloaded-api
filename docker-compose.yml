@@ -57,6 +57,7 @@ services:
       POSTGRES_PASSWORD: light
       POSTGRES_USER: warrior
       POSTGRES_DB: overloaded
+      POSTGRES_HOST: db
     depends_on:
       - db
 
