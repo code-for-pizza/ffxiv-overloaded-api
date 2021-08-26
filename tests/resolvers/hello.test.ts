@@ -1,7 +1,7 @@
 import faker from 'faker';
 import { ApolloServer, gql } from 'apollo-server';
-import typeDefs from '../../src/schema/typeDefs';
-import resolvers from '../../src/schema/resolvers';
+import typeDefs from '@root/schema/typeDefs';
+import resolvers from '@root/schema/resolvers';
 
 describe('hello resolver', () => {
   const mockServer = new ApolloServer({
