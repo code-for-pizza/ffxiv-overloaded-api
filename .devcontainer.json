@@ -18,7 +18,8 @@
 			"database": "overloaded",
 			"username": "warrior",
 			"password": "light"
-		}]
+		}],
+		"editor.formatOnSave": true
 	},
 
 	// Add the IDs of extensions you want installed when the container is created.
@@ -29,12 +30,11 @@
 		"eamodio.gitlens",
 		"ms-vsliveshare.vsliveshare",
 		"esbenp.prettier-vscode",
-		"rvest.vs-code-prettier-eslint",
 		"graphql.vscode-graphql"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	"forwardPorts": [3001, 5432],
+	"forwardPorts": [3002, 5432],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	"postCreateCommand": "yarn install",

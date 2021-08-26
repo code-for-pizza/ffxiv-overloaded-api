@@ -1,9 +1,9 @@
-version: '3.8'
+version: "3.8"
 
 services:
   # service run when remoting into a container as the coding environment in VS Code
   dev_container:
-    build: 
+    build:
       context: .
       dockerfile: ./docker/devcontainer.dockerfile
       args:
@@ -15,7 +15,9 @@ services:
 
     volumes:
       - .:/workspace
-      
+    environment:
+      PORT: 3002
+
     # Overrides default command so things don't shut down after the process ends.
     command: sleep infinity
 
@@ -25,7 +27,7 @@ services:
     # Uncomment the next line to use a non-root user for all processes.
     # user: node
 
-    # Use "forwardPorts" in **devcontainer.json** to forward an app port locally. 
+    # Use "forwardPorts" in **devcontainer.json** to forward an app port locally.
     # (Adding the "ports" property to this file will not forward from a Codespace.)
 
   db_local:
@@ -49,7 +51,8 @@ services:
     working_dir: /app
     volumes:
       - ./:/app
-    environment: 
+    environment:
+      PORT: 3001
       POSTGRES_PASSWORD: light
       POSTGRES_USER: warrior
       POSTGRES_DB: overloaded

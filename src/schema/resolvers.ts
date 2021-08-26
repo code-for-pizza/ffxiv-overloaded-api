@@ -1,9 +1,9 @@
 export default {
   Query: {
-    hello: (_: any, {name}: {name: string}) => {
+    hello: (_: any, { name }: { name: string }) => {
       if (name) return `hello ${name}`;
 
-      return 'hello world!!';
-    }
-  }
+      return "hello world!!!";
+    },
+  },
 };
