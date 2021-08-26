@@ -20,7 +20,8 @@
 			"username": "warrior",
 			"password": "light"
 		}],
-		"editor.formatOnSave": true
+		"editor.formatOnSave": true,
+		"prettier.singleQuote": true
 	},
 
 	// Add the IDs of extensions you want installed when the container is created.
