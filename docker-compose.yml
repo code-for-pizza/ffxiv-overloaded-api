@@ -74,13 +74,5 @@ services:
     ports:
       - 5432:5432
 
-  lint: 
-    <<: *base
-    command: sh -c "yarn install && yarn format-check && yarn lint"
-
-  test-ci:
-    <<: *base
-    command: sh -c "yarn install && yarn test --coverage"
-
 volumes:
   postgres-data:
