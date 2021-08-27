@@ -19,6 +19,8 @@ jobs:
         node-version: 14.17.5
         cache: 'yarn'
     - run: yarn install
+
+    - name: Check Lint
     - run: yarn lint
 
   check-code-format:
