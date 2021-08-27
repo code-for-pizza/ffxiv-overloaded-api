@@ -3,12 +3,15 @@ import { UserWishlistedItem } from './types';
 
 export default {
   Query: {
-    hello: (_: any, { name }: { name: string }) => {
+    hello: (_: undefined, { name }: { name: string }): string => {
       if (name) return `hello ${name}`;
 
       return 'hello world!!!';
     },
-    wishlistItems: async (_: any, { userID }: UserWishlistedItem) => {
+    wishlistItems: async (
+      _: undefined,
+      { userID }: UserWishlistedItem
+    ): Promise<number[]> => {
       const rows = await knex('tblwishlisteditems')
         .select('itemid')
         .where({ userid: userID });
@@ -17,7 +20,10 @@ export default {
     },
   },
   Mutation: {
-    addWishlistItem: async (_: any, { userID, itemID }: UserWishlistedItem) => {
+    addWishlistItem: async (
+      _: undefined,
+      { userID, itemID }: UserWishlistedItem
+    ): Promise<number> => {
       try {
         await knex.transaction(async (trx) => {
           await trx('tblwishlisteditems')
@@ -32,7 +38,6 @@ export default {
         console.error(
           `Error occurred while adding a new wishlist item: ${error}`
         );
-        console.log(typeof error);
         throw error;
       }
     },
