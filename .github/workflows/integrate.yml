@@ -19,6 +19,18 @@ jobs:
         node-version: 14.17.5
         cache: 'yarn'
     
+    - name: Cache Node Modules
+      uses: actions/cache@v2.1.6
+      env:
+        cache-name: cache-node-modules
+      with:
+        path: '**/node_modules'
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-build-${{ env.cache-name }}-
+          ${{ runner.os }}-build-
+          ${{ runner.os }}-
+    
     - name: Install Dependencies
       run: yarn install
 
@@ -36,6 +48,18 @@ jobs:
         node-version: 14.17.5
         cache: 'yarn'
     
+    - name: Cache Node Modules
+      uses: actions/cache@v2.1.6
+      env:
+        cache-name: cache-node-modules
+      with:
+        path: '**/node_modules'
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-build-${{ env.cache-name }}-
+          ${{ runner.os }}-build-
+          ${{ runner.os }}-
+    
     - name: Install Dependencies
       run: yarn install
 
@@ -52,6 +76,18 @@ jobs:
       with:
         node-version: 14.17.5
         cache: 'yarn'
+    
+    - name: Cache Node Modules
+      uses: actions/cache@v2.1.6
+      env:
+        cache-name: cache-node-modules
+      with:
+        path: '**/node_modules'
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-build-${{ env.cache-name }}-
+          ${{ runner.os }}-build-
+          ${{ runner.os }}-
     
     - name: Install Dependencies
       run: yarn install
