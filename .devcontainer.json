@@ -21,7 +21,7 @@
 			"password": "light"
 		}],
 		"editor.formatOnSave": true,
-		"prettier.singleQuote": true
+		"prettier.configPath": "prettier.config.js",
 	},
 
 	// Add the IDs of extensions you want installed when the container is created.
