@@ -4,8 +4,8 @@
 {
 	"name": "ffxiv-overloaded-api",
 	"dockerComposeFile": "docker-compose.yml",
-	"service": "dev_container",
-	"runServices": ["dev_container"],
+	"service": "devcontainer",
+	"runServices": ["devcontainer"],
 	"workspaceFolder": "/workspace",
 
 	// Set *default* container specific settings.json values on container create.

@@ -1,8 +1,27 @@
 version: "3.8"
 
 services:
+  base: &base
+    image: node:14.17.5-alpine
+    environment:
+      POSTGRES_PASSWORD: light
+      POSTGRES_USER: warrior
+      POSTGRES_DB: overloaded
+      POSTGRES_HOST: db
+
+  db-base: &db-base
+    image: postgres:13.4
+    restart: unless-stopped
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./sql/db_seed.sql:/docker-entrypoint-initdb.d/db_seed.sql
+    environment:
+      POSTGRES_PASSWORD: light
+      POSTGRES_USER: warrior
+      POSTGRES_DB: overloaded
+
   # service run when remoting into a container as the coding environment in VS Code
-  dev_container:
+  devcontainer:
     build:
       context: .
       dockerfile: ./docker/devcontainer.dockerfile
@@ -22,7 +41,7 @@ services:
     command: sleep infinity
 
     # Runs app on the same network as the database container, allows "forwardPorts" in devcontainer.json function.
-    network_mode: service:db_local
+    network_mode: service:db-local
 
     # Uncomment the next line to use a non-root user for all processes.
     # user: node
@@ -30,23 +49,16 @@ services:
     # Use "forwardPorts" in **devcontainer.json** to forward an app port locally.
     # (Adding the "ports" property to this file will not forward from a Codespace.)
 
-  db_local:
-    image: postgres:13.4
-    restart: unless-stopped
-    volumes:
-      - postgres-data:/var/lib/postgresql/data
-      - ./sql/db_seed.sql:/docker-entrypoint-initdb.d/db_seed.sql
-    environment:
-      POSTGRES_PASSWORD: light
-      POSTGRES_USER: warrior
-      POSTGRES_DB: overloaded
+  db-local:
+    <<: *db-base
 
     # Add "forwardPorts": ["5432"] to **devcontainer.json** to forward PostgreSQL locally.
     # (Adding the "ports" property to this file will not forward from a Codespace.)
 
   service:
+    <<: *base
     image: node:14.17.5-alpine
-    command: sh -c "yarn install && yarn build && yarn start"
+    command: sh -c "yarn install && yarn start"
     ports:
       - 3001:3001
     working_dir: /app
@@ -54,23 +66,11 @@ services:
       - ./:/app
     environment:
       PORT: 3001
-      POSTGRES_PASSWORD: light
-      POSTGRES_USER: warrior
-      POSTGRES_DB: overloaded
-      POSTGRES_HOST: db
     depends_on:
       - db
 
   db:
-    image: postgres:13.4
-    restart: unless-stopped
-    volumes:
-      - postgres-data:/var/lib/postgresql/data
-      - ./sql/db_seed.sql:/docker-entrypoint-initdb.d/db_seed.sql
-    environment:
-      POSTGRES_PASSWORD: light
-      POSTGRES_USER: warrior
-      POSTGRES_DB: overloaded
+    <<: *db-base
     ports:
       - 5432:5432
 
