@@ -5,7 +5,7 @@ name: Test Pull Request
 
 on:
   push:
-    branches: [ kfb_*, kfb/*, bj/*, nk/*, dv/* ]
+    branches: [ kfb/*, bj/*, nk/*, dv/* ]
 
 jobs:
   check-lint:
@@ -50,4 +50,3 @@ jobs:
 
     - name: Run tests
     - run: yarn test --coverage
-    
