@@ -23,7 +23,7 @@ jobs:
       run: yarn install
       
     - name: Cache Node Modules
-      uses: actions/cache@latest
+      uses: actions/cache@2.1.6
       env:
         cache-name: cache-node-modules
       with:
