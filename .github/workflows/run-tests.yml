@@ -37,8 +37,8 @@ jobs:
           echo test, and deploy your project.
           
       - name: Lint
-        run: docker compose run lint
+        run: docker-compose run lint
         
       - name: Tests
-        run: docker compose run test-ci
+        run: docker-compose run test-ci
           
