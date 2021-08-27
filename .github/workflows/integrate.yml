@@ -51,6 +51,18 @@ jobs:
     - name: Install Dependencies
       run: yarn install
 
+    - name: Cache Node Modules
+      uses: actions/cache@v2.1.6
+      env:
+        cache-name: cache-node-modules
+      with:
+        path: '**/node_modules'
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-build-${{ env.cache-name }}-
+          ${{ runner.os }}-build-
+          ${{ runner.os }}-
+
     - name: Check Code Format
       run: yarn format-check
 
