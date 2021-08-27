@@ -3,6 +3,10 @@ version: "3.8"
 services:
   base: &base
     image: node:14.17.5-alpine
+    command: sh -c "yarn install"
+    working_dir: /app
+    volumes:
+      - ./:/app
     environment:
       POSTGRES_PASSWORD: light
       POSTGRES_USER: warrior
@@ -57,13 +61,9 @@ services:
 
   service:
     <<: *base
-    image: node:14.17.5-alpine
-    command: sh -c "yarn install && yarn start"
+    command: sh -c "yarn start"
     ports:
       - 3001:3001
-    working_dir: /app
-    volumes:
-      - ./:/app
     environment:
       PORT: 3001
     depends_on:
@@ -73,6 +73,14 @@ services:
     <<: *db-base
     ports:
       - 5432:5432
+
+  lint: 
+    <<: *base
+    command: sh -c "yarn format-check && yarn lint"
+
+  test-ci:
+    <<: *base
+    command: sh -c "yarn test --coverage"
 
 volumes:
   postgres-data:

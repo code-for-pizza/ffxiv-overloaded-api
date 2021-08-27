@@ -38,6 +38,8 @@
     "start": "ts-node -r tsconfig-paths/register src/server.ts",
     "watch": "ts-node-dev -r tsconfig-paths/register src/server.ts",
     "test": "jest",
-    "format-check": "prettier ."
+    "format": "prettier --write .",
+    "format-check": "prettier --check .",
+    "lint": "eslint ."
   }
 }
