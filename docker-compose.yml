@@ -61,7 +61,7 @@ services:
 
   service:
     <<: *base
-    command: sh -c "yarn start"
+    command: sh -c "yarn install && yarn start"
     ports:
       - 3001:3001
     environment:
@@ -76,11 +76,11 @@ services:
 
   lint: 
     <<: *base
-    command: sh -c "yarn format-check && yarn lint"
+    command: sh -c "yarn install && yarn format-check && yarn lint"
 
   test-ci:
     <<: *base
-    command: sh -c "yarn test --coverage"
+    command: sh -c "yarn install && yarn test --coverage"
 
 volumes:
   postgres-data:
