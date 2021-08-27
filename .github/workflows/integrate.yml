@@ -13,11 +13,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Install dependencies
+    - name: Install Node
       uses: actions/setup-node@v2
       with:
         node-version: 14.17.5
         cache: 'yarn'
+    
+    - name: Install Dependencies
     - run: yarn install
 
     - name: Check Lint
@@ -28,11 +30,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Install dependencies
+    - name: Install Node
       uses: actions/setup-node@v2
       with:
         node-version: 14.17.5
         cache: 'yarn'
+    
+    - name: Install Dependencies
     - run: yarn install
 
     - name: Check Code Format
@@ -43,11 +47,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Install dependencies
+    - name: Install Node
       uses: actions/setup-node@v2
       with:
         node-version: 14.17.5
         cache: 'yarn'
+    
+    - name: Install Dependencies
     - run: yarn install
 
     - name: Run tests
