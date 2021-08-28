@@ -33,7 +33,7 @@ services:
     restart: unless-stopped
     volumes:
       - postgres-data:/var/lib/postgresql/data
-      - ./sql/db_seed.sql:/docker-entrypoint-initdb.d/db_seed.sql
+      - ../sql/db_seed.sql:/docker-entrypoint-initdb.d/db_seed.sql
     environment:
       POSTGRES_PASSWORD: light
       POSTGRES_USER: warrior
