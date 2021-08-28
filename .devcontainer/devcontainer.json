@@ -2,10 +2,9 @@
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.191.1/containers/javascript-node-postgres
 // Update the VARIANT arg in docker-compose.yml to pick a Node.js version: 10, 12, 14 
 {
-	"name": "ffxiv-overloaded-api",
+	"name": "FFXIV Overloaded API",
 	"dockerComposeFile": "docker-compose.yml",
-	"service": "devcontainer",
-	"runServices": ["devcontainer"],
+	"service": "service-local",
 	"workspaceFolder": "/workspace",
 
 	// Set *default* container specific settings.json values on container create.
