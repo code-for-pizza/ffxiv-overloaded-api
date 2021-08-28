@@ -1,25 +1,21 @@
 version: '3.8'
+
 services:
-  # service run when remoting into a container as the coding environment in VS Code
   service-local:
     build:
       context: .
-      dockerfile: ./devcontainer.dockerfile
+      dockerfile: Dockerfile
       args:
         # [Choice] Node.js version: 14, 12, 10
         VARIANT: 14
         # On Linux, you may need to update USER_UID and USER_GID below if not your local UID is not 1000.
         USER_UID: 1000
         USER_GID: 1000
-
-    volumes:
-      - ..:/workspace
-    environment:
+    environment: 
       PORT: 3002
-      POSTGRES_PASSWORD: light
-      POSTGRES_USER: warrior
-      POSTGRES_DB: overloaded
-
+    volumes:
+      - ..:/workspace:cached
+      
     # Overrides default command so things don't shut down after the process ends.
     command: sleep infinity
 
@@ -29,9 +25,9 @@ services:
     # Uncomment the next line to use a non-root user for all processes.
     # user: node
 
-    # Use "forwardPorts" in **devcontainer.json** to forward an app port locally.
+    # Use "forwardPorts" in **devcontainer.json** to forward an app port locally. 
     # (Adding the "ports" property to this file will not forward from a Codespace.)
- 
+
   db-local:
     image: postgres:13.4
     restart: unless-stopped
