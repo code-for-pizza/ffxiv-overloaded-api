@@ -4,9 +4,10 @@ export default {
   development: {
     client: 'postgresql',
     connection: {
-      database: 'overloaded',
-      user: 'warrior',
-      password: 'light',
+      host: process.env.POSTGRES_HOST,
+      database: process.env.POSTGRES_DB,
+      user: process.env.POSTGRES_USER,
+      password: process.env.POSTGRES_PASSWORD,
     },
     pool: {
       min: 2,
