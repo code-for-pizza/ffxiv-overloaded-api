@@ -11,7 +11,11 @@ services:
         # On Linux, you may need to update USER_UID and USER_GID below if not your local UID is not 1000.
         USER_UID: 1000
         USER_GID: 1000
-    environment: 
+    environment:
+      POSTGRES_HOST: db-local
+      POSTGRES_PASSWORD: light
+      POSTGRES_USER: warrior
+      POSTGRES_DB: overloaded
       PORT: 3002
     volumes:
       - ..:/workspace:cached
@@ -33,7 +37,6 @@ services:
     restart: unless-stopped
     volumes:
       - postgres-data:/var/lib/postgresql/data
-      - ../sql/db_seed.sql:/docker-entrypoint-initdb.d/db_seed.sql
     environment:
       POSTGRES_PASSWORD: light
       POSTGRES_USER: warrior

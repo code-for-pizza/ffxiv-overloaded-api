@@ -40,6 +40,8 @@
     "test": "jest",
     "format": "prettier --write .",
     "format-check": "prettier --check .",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "migrate:make": "knex migrate:make",
+    "migrate:update": "knex migrate:latest"
   }
 }
