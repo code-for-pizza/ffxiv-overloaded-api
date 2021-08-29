@@ -11,6 +11,8 @@ export async function up(knex: Knex): Promise<void> {
     });
 }
 
-export async function down(): Promise<void> {
-  return;
+export async function down(knex: Knex): Promise<void> {
+  const exists = await knex.schema.hasTable('tbl_wishlisted_items');
+
+  if (exists) return knex.schema.dropTable('tbl_wishlisted_items');
 }
