@@ -1,4 +1,4 @@
-import knex from '@root/database';
+import knex from 'db';
 import { UserWishlistedItem } from './types';
 
 export default {
@@ -12,11 +12,11 @@ export default {
       _: undefined,
       { userID }: UserWishlistedItem
     ): Promise<number[]> => {
-      const rows = await knex('tblwishlisteditems')
-        .select('itemid')
-        .where({ userid: userID });
+      const rows = await knex('tbl_wishlisted_items')
+        .select('item_id')
+        .where({ user_id: userID });
 
-      return rows.map((row) => row.itemid);
+      return rows.map((row) => row.item_id);
     },
   },
   Mutation: {
@@ -26,10 +26,10 @@ export default {
     ): Promise<number> => {
       try {
         await knex.transaction(async (trx) => {
-          await trx('tblwishlisteditems')
+          await trx('tbl_wishlisted_items')
             .insert({
-              userid: userID,
-              itemid: itemID,
+              user_id: userID,
+              item_id: itemID,
             })
             .transacting(trx);
         });
