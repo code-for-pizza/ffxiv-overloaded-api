@@ -1,13 +1,25 @@
 version: "3.8"
 
 services:
+  db-base: &db-base
+    image: postgres:13.4
+    restart: unless-stopped
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: light
+      POSTGRES_USER: warrior
+      POSTGRES_DB: overloaded
+    ports:
+      - 5432:5432
+
   service:
     image: node:14.17.5-alpine
     command: sh -c "yarn install"
     working_dir: /app
     volumes:
       - ./:/app
-    command: sh -c "yarn start"
+    command: sh -c "yarn migrate:update && yarn start"
     ports:
       - 3001:3001
     environment:
@@ -21,17 +33,28 @@ services:
     depends_on:
       - db
 
-  db:
-    image: postgres:13.4
-    restart: unless-stopped
+  test-ci:
+    image: node:14.17.5-alpine
+    command: sh -c "yarn install"
+    working_dir: /app
     volumes:
-      - postgres-data:/var/lib/postgresql/data
+      - ./:/app
+    command: sh -c "yarn migrate:update && yarn test --coverage"
+    ports:
+      - 3001:3001
     environment:
       POSTGRES_PASSWORD: light
       POSTGRES_USER: warrior
       POSTGRES_DB: overloaded
-    ports:
-      - 5432:5432
+      POSTGRES_HOST: db-ci
+    depends_on:
+      - db-ci
+
+  db:
+    <<: *db-base
+
+  db-ci:
+    <<: *db-base
 
 volumes:
   postgres-data:
