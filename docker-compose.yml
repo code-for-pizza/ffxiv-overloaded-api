@@ -33,6 +33,15 @@ services:
     depends_on:
       - db
 
+  service-staging:
+    build:
+      context: .
+      dockerfile: docker/staging.dockerfile
+    environment: 
+      PORT: 3001
+    ports: 
+      - 3001:3001
+
   test-ci:
     image: node:14.17.5-alpine
     command: sh -c "yarn install && yarn migrate:update && yarn test --coverage"
