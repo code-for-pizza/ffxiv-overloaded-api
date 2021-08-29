@@ -1,5 +1,5 @@
 import createConnection, { Knex } from 'knex';
-import config from 'knexfile';
+import config from '~/knexfile';
 
 /**
  * Returns the proper config based on the current environment
@@ -24,16 +24,6 @@ function createKnexConnection(): Knex {
   return createConnection(getConfig());
 }
 
-/**
- * Runs all migrations to keep the DB changes up to date
- */
-async function updateMigrations(knex: Knex): Promise<void> {
-  console.log('Running migrations...', '\n');
-
-  await knex.migrate.latest({ directory: './migrations' });
-  console.log('Migrations now are up to date.', '\n');
-}
-
 function setupDatabase() {
   let knex;
   let retries = 5;
@@ -46,8 +36,6 @@ function setupDatabase() {
         `Successfully connected to the ${knex.client} database.`,
         '\n'
       );
-
-      updateMigrations(knex);
 
       return knex;
     } catch (error) {
