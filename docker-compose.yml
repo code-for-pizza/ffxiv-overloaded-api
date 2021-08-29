@@ -35,8 +35,7 @@ services:
 
   test-ci:
     image: node:14.17.5-alpine
-    command: sh -c "yarn install"
-    command: sh -c "yarn migrate:update && yarn test --coverage"
+    command: sh -c "yarn install && yarn migrate:update && yarn test --coverage"
     working_dir: /app
     volumes:
       - ./:/app
