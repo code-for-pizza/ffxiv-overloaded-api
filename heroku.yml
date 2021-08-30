@@ -8,7 +8,9 @@ build:
     staging: Dockerfile.staging
 
 release:
-  staging: yarn migrate:update
+  command: yarn migrage:update
+  image: staging
 
 run:
-  staging: yarn start
+  command: yarn start
+  image: staging
