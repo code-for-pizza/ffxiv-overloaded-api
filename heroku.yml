@@ -6,8 +6,6 @@ setup:
 build:
   docker:
     web: Dockerfile.staging
-    review: Dockerfile.staging
 
 release:
   web: yarn migrate:update
-  review: yarn migrate:update
