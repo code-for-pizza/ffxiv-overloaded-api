@@ -6,3 +6,6 @@ setup:
 build:
   docker:
     staging: Dockerfile.staging
+
+run:
+  staging: yarn migrate:update && yarn start
