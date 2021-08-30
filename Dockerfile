@@ -5,15 +5,12 @@ WORKDIR /app
 
 COPY package.json .
 COPY yarn.lock .
+COPY tsconfig.json .
 
-RUN yarn install && yarn build
+RUN yarn install
 
 COPY . .
 
 EXPOSE $PORT
 
 CMD ["yarn", "start"]
-
-# docker-compose build --no-cache
-# docker image tag ffxiv-overloaded-api_service-staging keithfrancisb/ffxiv-overloaded-api_service-staging
-# docker image push keithfrancisb/ffxiv-overloaded-api_service-staging
