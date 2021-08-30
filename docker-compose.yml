@@ -36,7 +36,7 @@ services:
   service-staging:
     build:
       context: .
-      dockerfile: docker/Dockerfile.staging
+      dockerfile: Dockerfile
     environment: 
       PORT: 3001
     ports: 
