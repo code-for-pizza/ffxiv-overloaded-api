@@ -1,5 +1,5 @@
 import createConnection, { Knex } from 'knex';
-import config from '~/knexfile';
+import config from '../knexfile';
 
 /**
  * Returns the proper config based on the current environment
