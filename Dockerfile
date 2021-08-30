@@ -6,8 +6,7 @@ WORKDIR /app
 COPY package.json .
 COPY yarn.lock .
 
-RUN yarn install
-RUN npx tsc
+RUN yarn install && yarn build
 
 COPY . .
 
