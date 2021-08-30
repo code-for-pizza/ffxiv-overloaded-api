@@ -8,4 +8,6 @@ build:
     web: Dockerfile.staging
 
 release:
-  web: yarn migrate:update
+  command:
+    - yarn migrate:update
+  image: web
