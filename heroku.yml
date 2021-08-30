@@ -9,7 +9,7 @@ build:
 
 release:
   command:
-    - yarn migrage:update
+    - yarn migrate:update
   image: staging
 
 run:
