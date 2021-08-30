@@ -43,5 +43,10 @@
     "lint": "eslint .",
     "migrate:make": "knex migrate:make --knexfile knexfile.js",
     "migrate:update": "knex migrate:latest --knexfile knexfile.js"
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "dist/*"
+    ]
   }
 }
