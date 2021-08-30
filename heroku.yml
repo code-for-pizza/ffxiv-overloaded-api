@@ -6,14 +6,3 @@ setup:
 build:
   docker:
     web: Dockerfile
-
-release:
-  command:
-    - yarn migrate:update
-  image: web
-
-run:
-  server-starter:
-    command:
-      - yarn start
-    image: web
