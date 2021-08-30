@@ -1,6 +1,14 @@
 // Update with your config settings.
 
-export default {
+import { Knex } from 'knex';
+
+type Configs = {
+  development: Knex.Config;
+  staging: Knex.Config;
+  production: Knex.Config;
+};
+
+const configs: Configs = {
   development: {
     client: 'postgresql',
     connection: {
@@ -48,3 +56,5 @@ export default {
     },
   },
 };
+
+export default configs;
