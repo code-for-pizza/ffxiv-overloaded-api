@@ -1,14 +1,7 @@
+/* eslint-disable no-undef */
 // Update with your config settings.
 
-import { Knex } from 'knex';
-
-type Configs = {
-  development: Knex.Config;
-  staging: Knex.Config;
-  production: Knex.Config;
-};
-
-const configs: Configs = {
+const configs = {
   development: {
     client: 'postgresql',
     connection: {
@@ -57,4 +50,4 @@ const configs: Configs = {
   },
 };
 
-export default configs;
+module.exports = configs;
