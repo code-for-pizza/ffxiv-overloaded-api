@@ -3,11 +3,13 @@
   "description": "GraphQL server used for the FFXIV Overloaded App",
   "repository": "https://github.com/code-for-pizza/ffxiv-overloaded-api",
   "success_url": "/graphql",
-
+  "stack": "container",
   "environments": {
     "review": {
-      "stack": "container",
-      "addons": ["heroku-postgresql:hobby-dev"]
+      "addons": ["heroku-postgresql:hobby-dev"],
+      "env": {
+        "NODE_ENV": "staging"
+      }
     }
   }
 }
