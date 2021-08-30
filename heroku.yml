@@ -5,15 +5,15 @@ setup:
 
 build:
   docker:
-    staging: Dockerfile.staging
+    web: Dockerfile.staging
 
 release:
   command:
     - yarn migrate:update
-  image: staging
+  image: web
 
 run:
   server-starter:
     command:
       - yarn start
-    image: staging
+    image: web
