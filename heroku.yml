@@ -5,7 +5,7 @@ setup:
 
 build:
   docker:
-    web: Dockerfile.staging
+    web: Dockerfile
 
 release:
   command:

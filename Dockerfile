@@ -1,5 +1,5 @@
 FROM node:14.17.5-alpine
-ENV NODE_ENV=staging
+ENV NODE_ENV=production
 
 WORKDIR /app
 
@@ -10,7 +10,7 @@ RUN yarn install
 
 COPY . .
 
-EXPOSE 3001
+EXPOSE $PORT
 
 CMD ["yarn", "migrate:update", "&&", "yarn", "start"]
 
