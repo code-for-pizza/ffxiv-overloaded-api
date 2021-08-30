@@ -5,4 +5,4 @@ setup:
 
 build:
   docker:
-    staging: docker/Dockerfile.staging
+    staging: Dockerfile.staging
