@@ -7,7 +7,7 @@ COPY package.json .
 COPY yarn.lock .
 
 RUN yarn install
-RUN yarn build
+RUN npx tsc
 
 COPY . .
 
