@@ -13,6 +13,7 @@ release:
   image: staging
 
 run:
-  command:
-    - yarn start
-  image: staging
+  server-starter:
+    command:
+      - yarn start
+    image: staging
