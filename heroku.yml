@@ -5,9 +5,9 @@ setup:
 
 build:
   docker:
-    staging: Dockerfile.staging
+    web: Dockerfile.staging
 
 release:
   command:
     - yarn migrate:update
-  image: staging
+  image: web
