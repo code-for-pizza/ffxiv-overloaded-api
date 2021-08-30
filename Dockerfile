@@ -14,7 +14,7 @@ EXPOSE $PORT
 
 RUN yarn migrate:update
 
-CMD ["yarn", "start"]
+CMD ["sh", "-c", "yarn migrate:update && yarn start"]
 
 # docker-compose build --no-cache
 # docker image tag ffxiv-overloaded-api_service-staging keithfrancisb/ffxiv-overloaded-api_service-staging
