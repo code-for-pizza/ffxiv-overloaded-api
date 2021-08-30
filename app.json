@@ -3,7 +3,7 @@
   "description": "GraphQL server used for the FFXIV Overloaded App",
   "repository": "https://github.com/code-for-pizza/ffxiv-overloaded-api",
 
-  "stack": "container",
+  "stack": "heroku-20",
   "formation": {
     "web": {
       "quantity": 1,
