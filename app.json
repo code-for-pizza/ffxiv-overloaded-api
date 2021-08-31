@@ -11,6 +11,10 @@
     }
   },
   
+  "env": {
+    "NODE_ENV": "development"
+  },
+
   "environments": {
     "review": {
       "addons": ["heroku-postgresql:hobby-dev"]
