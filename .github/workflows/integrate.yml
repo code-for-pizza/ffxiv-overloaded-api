@@ -5,7 +5,7 @@ name: Test Pull Request
 
 on:
   push:
-    branches: [ kfb/**, bj/**, nk/**, dv/** ]
+    branches: [ main, develop, kfb/**, bj/**, nk/**, dv/** ]
 
 jobs:
   check-lint:
