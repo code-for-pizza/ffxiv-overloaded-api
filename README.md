@@ -30,4 +30,28 @@ Done. Press any key to close the terminal.
 ```
 7. Open a terminal (Ctrl+Shift+\`) and run the command `yarn watch`.
 8. Visiting http://localhost:3002/graphql in the browser should open the playground for the server locally.
+9. Press Ctrl+C to stop the server.
+10. To exit the container, click on the green `><` icon again and "Reopen Folder" elsewhere. Alternatively, you can also select "Close Remote Connection".
+---
 
+## Development
+
+### Stay in the Container
+Make sure that you stay in the container while you are developing since everything you need is in there. The container not only has the project dependencies installed and usable, but the VS Code extensions that makes developing in this project easy and helpful (i.e. Code auto-formatter and DB interactions outside of server) are also already installed in the container.
+
+### Keep Server running
+You will want to have the command `yarn watch` running. This will ensure that the server is running and any code changes you make will restart the server with your new changes.
+
+### Git Gud
+It is highly recommended that you commit your changes regularly whenever you get something to successfully work. This ensures that if, for whatever reason, you broke your code, you have a previously working code to fallback to. It's essentially a quick-save before its game over.
+
+### Database Resets
+If you need to wipe the data in the database clean follow the following steps:
+1. Exit and stop the container.
+2. Open Docker Desktop.
+3. Go to the "Container/Apps" list.
+4. Stop all the containers in the "ffxiv-overloaded-api_devcontainer" app.
+5. Delete all the containers in the "ffxiv-overloaded-api_devcontainer" app.
+6. Go to the "Volumes" list.
+7. Delete the volume "ffxiv-overloaded-api_devcontainer_postgres-data".
+8. Reopen the project in the container again with a fresh new database.
