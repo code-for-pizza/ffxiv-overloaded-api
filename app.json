@@ -4,15 +4,9 @@
   "repository": "https://github.com/code-for-pizza/ffxiv-overloaded-api",
 
   "stack": "heroku-20",
-  "formation": {
-    "web": {
-      "quantity": 1,
-      "size": "standard-1x"
-    }
-  },
   
   "env": {
-    "NODE_ENV": "development"
+    "NODE_ENV": "staging"
   },
 
   "environments": {
