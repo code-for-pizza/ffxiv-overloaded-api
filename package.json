@@ -47,5 +47,6 @@
     "testPathIgnorePatterns": [
       "dist/*"
     ]
-  }
+  },
+  "module": "ES2020"
 }
