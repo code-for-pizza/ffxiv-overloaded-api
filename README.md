@@ -32,7 +32,7 @@ Done. Press any key to close the terminal.
 8. Visiting http://localhost:3002/graphql in the browser should open the playground for the server locally.
 9. Press Ctrl+C to stop the server.
 10. To exit the container, click on the green `><` icon again and "Reopen Folder" elsewhere. Alternatively, you can also select "Close Remote Connection".
----
+
 
 ## Development
 
