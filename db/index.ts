@@ -11,7 +11,7 @@ const getConfig = (): Knex.Config => {
     case 'staging':
       return config.staging;
     default:
-      console.log(config.development);
+      console.log('Using development configs...', '\n');
       return config.development;
   }
 };
