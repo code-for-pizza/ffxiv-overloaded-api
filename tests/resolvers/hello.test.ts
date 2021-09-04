@@ -16,7 +16,7 @@ describe('hello resolver', () => {
         hello
       }
     `;
-    const expectedResult = 'hello world? ARE YOU WORKING OR NOT OH MY GOSH';
+    const expectedResult = 'hello world! ARE YOU WORKING OR NOT OH MY GOSH';
 
     // act
     const { data } = await mockServer.executeOperation({ query });
