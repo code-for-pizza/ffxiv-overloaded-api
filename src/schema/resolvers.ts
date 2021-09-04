@@ -6,7 +6,7 @@ export default {
     hello: (_: undefined, { name }: { name: string }): string => {
       if (name) return `hello ${name}`;
 
-      return 'hello world!!!';
+      return 'hello world!';
     },
     wishlistItems: async (
       _: undefined,
