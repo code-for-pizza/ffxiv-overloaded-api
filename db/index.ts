@@ -11,7 +11,6 @@ const getConfig = (): Knex.Config => {
     case 'staging':
       return config.staging;
     default:
-      console.log('Using development configs...', '\n');
       return config.development;
   }
 };
@@ -20,32 +19,19 @@ const getConfig = (): Knex.Config => {
  * Creates connection to the Knex Postgres DB
  */
 function createKnexConnection(): Knex {
-  console.log('Attempting to connect to the database...', '\n');
   return createConnection(getConfig());
 }
 
 function setupDatabase() {
   let knex;
-  let retries = 5;
 
-  while (retries) {
-    try {
-      if (!knex) knex = createKnexConnection();
+  try {
+    if (!knex) knex = createKnexConnection();
 
-      console.log(
-        `Successfully connected to the ${knex.client} database.`,
-        '\n'
-      );
-
-      return knex;
-    } catch (error) {
-      if (!knex) {
-        console.error(
-          `Failed to connect to the database: ${error}`,
-          '\n',
-          `Retrying ${--retries} more times...`
-        );
-      }
+    return knex;
+  } catch (error) {
+    if (!knex) {
+      console.error(`Failed to connect to the database: ${error}`);
     }
   }
 
