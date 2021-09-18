@@ -20,3 +20,23 @@ export const getWishlistItemsByUserID = async (
 
   return result.rows.map((row: Row) => row.item_id);
 };
+
+export const addWishlistItem = async (
+  userID: number,
+  itemID: number
+): Promise<number> => {
+  const sql = `
+    INSERT INTO tbl_wishlisted_items (user_id, item_id)
+    VALUES (?, ?)
+  `;
+
+  try {
+    await knex.transaction(async (trx) => {
+      await trx.raw(sql, [userID, itemID]);
+    });
+  } catch (error) {
+    console.error(`Error occurred while adding a new wishlist item: ${error}`);
+  }
+
+  return itemID;
+};
