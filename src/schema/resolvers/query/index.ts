@@ -1,4 +1,4 @@
-import knex from '~/db';
+import { getWishlistItemsByUserID } from '@root/services/WishlistItemService';
 import { UserWishlistedItem } from '../types';
 
 const Query = {
@@ -11,11 +11,7 @@ const Query = {
     _: undefined,
     { userID }: UserWishlistedItem
   ): Promise<number[]> => {
-    const rows = await knex('tbl_wishlisted_items')
-      .select('item_id')
-      .where({ user_id: userID });
-
-    return rows.map((row) => row.item_id);
+    return await getWishlistItemsByUserID(userID);
   },
 };
 
