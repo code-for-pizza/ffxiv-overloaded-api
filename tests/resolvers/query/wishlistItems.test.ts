@@ -1,7 +1,11 @@
 import { gql } from 'apollo-server';
 import faker from 'faker';
 import { mockServer } from '@testRoot/utils/mockServer';
-import { clearDatabase, initializeDatabase } from '@testRoot/utils/database';
+import {
+  clearDatabase,
+  initializeDatabase,
+  closeDatabase,
+} from '@testRoot/utils/database';
 
 describe('wishlistItems resolver', () => {
   const mockItemList = Array(4)
@@ -20,7 +24,10 @@ describe('wishlistItems resolver', () => {
         userWishlistItemIDs: testUserWishlistItems,
       })
   );
-  afterAll(async () => await clearDatabase());
+  afterAll(async () => {
+    await clearDatabase();
+    await closeDatabase();
+  });
 
   it('returns the correct item list given a userID', async () => {
     // arrange

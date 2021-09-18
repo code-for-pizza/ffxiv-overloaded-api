@@ -46,9 +46,9 @@ export const clearDatabase = async (): Promise<void> => {
   `;
 
   await knex.transaction(async (trx) => await trx.raw(sql));
-
-  knex.destroy();
 };
+
+export const closeDatabase = (): Promise<void> => knex.destroy();
 
 const generateWishlistItems = (userID: number, itemCount: number): string[] => {
   return Array(itemCount)
