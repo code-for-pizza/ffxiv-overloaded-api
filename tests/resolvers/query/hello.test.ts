@@ -1,14 +1,8 @@
 import faker from 'faker';
-import { ApolloServer, gql } from 'apollo-server';
-import typeDefs from '@root/schema/typeDefs';
-import resolvers from '@root/schema/resolvers';
+import { gql } from 'apollo-server';
+import { mockServer } from '@testRoot/utils/mockServer';
 
 describe('hello resolver', () => {
-  const mockServer = new ApolloServer({
-    typeDefs,
-    resolvers,
-  });
-
   it('returns the correct string, given no name', async () => {
     // arrange
     const query = gql`
