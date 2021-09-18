@@ -36,6 +36,7 @@ export const addWishlistItem = async (
     });
   } catch (error) {
     console.error(`Error occurred while adding a new wishlist item: ${error}`);
+    throw error;
   }
 
   return itemID;
